@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<nav class="bg-gray-800">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a class="text-yellow-400 text-3xl font-bold" href="#">WoW Private Server</a>
+        <div>
+            <a class="text-gray-200 px-4 py-2 hover:text-yellow-400" href="/">Home</a>
+            <a class="text-gray-200 px-4 py-2 hover:text-yellow-400" href="/register"> Create an Account</a>
+        </div>
+    </div>
+</nav>
+<body class="bg-gray-900 text-white">
+
+<div class="container mx-auto px-4 py-10">
+    <h1 class="text-4xl font-bold text-center text-yellow-400 mb-8">Register an Account</h1>
+    <div class="max-w-md mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+        <form th:action="@{/register}" th:object="${register}" method="post" class="space-y-6">
+
+            <!-- Username Field -->
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-300">Username</label>
+                <input type="text" id="username" name="username"
+                       th:field="*{username}"
+                       placeholder="Enter your username"
+                       class="w-full mt-1 p-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                       maxlength="20" required>
+                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-red-500 text-sm mt-1"></p>
+            </div>
+
+            <!-- Password Field -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+                <input type="password" id="password" name="password"
+                       th:field="*{password}"
+                       placeholder="Enter your password"
+                       class="w-full mt-1 p-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                       required>
+                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-red-500 text-sm mt-1"></p>
+            </div>
+
+            <!-- Email Field -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+                <input type="email" id="email" name="email"
+                       th:field="*{email}"
+                       placeholder="Enter your email address"
+                       class="w-full mt-1 p-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                       required>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-red-500 text-sm mt-1"></p>
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+                <button type="submit" class="w-full bg-yellow-400 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-500 transition-colors">
+                    Register
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+<footer class="bg-gray-900 text-gray-300 py-8">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+            <!-- Social Media Links -->
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                    <i class="fab fa-facebook-f text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                    <i class="fab fa-twitter text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                    <i class="fab fa-discord text-2xl"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer Links or Copyright -->
+        <div class="mt-6 text-center text-sm text-gray-400">
+            <p>&copy; 2024 WoW Private Server. All rights reserved.</p>
+            <p class="mt-2">Crafted with ❤️ by the WoW Libre</p>
+        </div>
+    </div>
+</footer>
+
+</html>
