@@ -94,7 +94,7 @@ echo $DB_USERNAME
 echo $DB_PASSWORD
 ```
 
-###  Ejecutar la aplicación
+###  Compilar Aplicacion 
 Una vez que Java esté instalado y las variables de entorno configuradas, puedes compilar y ejecutar la aplicación. Desde la raíz del proyecto, ejecuta los siguientes comandos:
 
 - Compilar el proyecto (usando Maven):
@@ -103,6 +103,14 @@ Una vez que Java esté instalado y las variables de entorno configuradas, puedes
 ```bash
 mvn clean install
 ```
+### Omitir Compilacion
+Dejo la ultima version compilada subida a mediafire, solo debes descargarlo y ejecutar 
+
+```bash
+java -jar app-register-account.jar
+```
+
+https://www.mediafire.com/file/0p0090ekk9qzkej/app-register-account.jar/file
 
 ### Verificación
 
