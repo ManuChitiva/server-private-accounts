@@ -12,14 +12,27 @@ import java.security.*;
 @Service
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
+    private final GoogleService googleService;
 
-    public AccountServiceImpl(AccountRepository accountRepository) {
+    public AccountServiceImpl(AccountRepository accountRepository, GoogleService googleService) {
         this.accountRepository = accountRepository;
+        this.googleService = googleService;
     }
 
 
     @Override
-    public void create(AccountCreateDto request) {
+    public void create(AccountCreateDto request, String recaptchaToken, String ip) {
+
+
+        if (!googleService.verifyRecaptcha(new VerifyCaptchaRequest(
+                recaptchaToken, ip)).getSuccess()) {
+            throw new RuntimeException("The captcha is invalid");
+        }
+
+        if (accountRepository.findByUsername(request.getUsername()).isPresent()) {
+            throw new RuntimeException("The user is already registered");
+        }
+
         SecureRandom random = new SecureRandom();
 
         try {
