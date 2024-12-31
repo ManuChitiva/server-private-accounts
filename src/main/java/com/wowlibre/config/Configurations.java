@@ -11,4 +11,6 @@ import org.springframework.stereotype.*;
 public class Configurations {
     @Value("${google.api-secret}")
     private String apiSecret;
+    @Value("${google.api-key}")
+    private String apiKey;
 }

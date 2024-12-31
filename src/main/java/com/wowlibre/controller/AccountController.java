@@ -1,5 +1,6 @@
 package com.wowlibre.controller;
 
+import com.wowlibre.config.*;
 import com.wowlibre.dto.*;
 import com.wowlibre.service.*;
 import jakarta.servlet.http.*;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class AccountController {
     private final AccountService accountService;
+    private final Configurations configurations;
 
-    public AccountController(AccountService accountService) {
+    public AccountController(AccountService accountService, Configurations configurations) {
         this.accountService = accountService;
+        this.configurations = configurations;
     }
 
     @PostMapping("/register")
@@ -29,6 +32,7 @@ public class AccountController {
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("register", new AccountCreateDto());
+        model.addAttribute("recaptchaSiteKey", configurations.getApiKey());
         return "register";
     }
 

@@ -60,7 +60,7 @@
                        type="email">
                 <p class="text-red-500 text-sm mt-1" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></p>
             </div>
-            <div class="g-recaptcha" data-sitekey="6LdCTaoqAAAAACj-rif8fLf97kWx-7fPUQvLAnYC"></div>
+            <div class="g-recaptcha" th:data-sitekey="${recaptchaSiteKey}"></div>
             <!-- Submit Button -->
             <div>
                 <button class="w-full bg-yellow-400 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-500 transition-colors" type="submit">
