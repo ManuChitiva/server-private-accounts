@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Account Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script async defer src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <nav class="bg-gray-800">
@@ -20,44 +21,49 @@
 <div class="container mx-auto px-4 py-10">
     <h1 class="text-4xl font-bold text-center text-yellow-400 mb-8">Register an Account</h1>
     <div class="max-w-md mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
-        <form th:action="@{/register}" th:object="${register}" method="post" class="space-y-6">
+        <form class="space-y-6" method="post" th:action="@{/register}" th:object="${register}">
 
             <!-- Username Field -->
             <div>
-                <label for="username" class="block text-sm font-medium text-gray-300">Username</label>
-                <input type="text" id="username" name="username"
-                       th:field="*{username}"
+                <label class="block text-sm font-medium text-gray-300" for="username">Username</label>
+                <input class="w-full mt-1 p-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" id="username"
+                       maxlength="15"
+                       minlength="5"
+                       name="username"
                        placeholder="Enter your username"
-                       class="w-full mt-1 p-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                       maxlength="20" required>
-                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-red-500 text-sm mt-1"></p>
+                       required
+                       th:field="*{username}" type="text">
+                <p class="text-red-500 text-sm mt-1" th:errors="*{username}" th:if="${#fields.hasErrors('username')}"></p>
             </div>
 
             <!-- Password Field -->
             <div>
-                <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
-                <input type="password" id="password" name="password"
-                       th:field="*{password}"
+                <label class="block text-sm font-medium text-gray-300" for="password">Password</label>
+                <input class="w-full mt-1 p-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" id="password" maxlength="15"
+                       minlength="5"
+                       name="password"
                        placeholder="Enter your password"
-                       class="w-full mt-1 p-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                       required>
-                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-red-500 text-sm mt-1"></p>
+                       required
+                       th:field="*{password}"
+                       type="password">
+                <p class="text-red-500 text-sm mt-1" th:errors="*{password}" th:if="${#fields.hasErrors('password')}"></p>
             </div>
 
             <!-- Email Field -->
             <div>
-                <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
-                <input type="email" id="email" name="email"
-                       th:field="*{email}"
+                <label class="block text-sm font-medium text-gray-300" for="email">Email</label>
+                <input class="w-full mt-1 p-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" id="email" maxlength="30"
+                       minlength="5"
+                       name="email"
                        placeholder="Enter your email address"
-                       class="w-full mt-1 p-2 bg-gray-700 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                       required>
-                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-red-500 text-sm mt-1"></p>
+                       required th:field="*{email}"
+                       type="email">
+                <p class="text-red-500 text-sm mt-1" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></p>
             </div>
-
+            <div class="g-recaptcha" data-sitekey="6LdCTaoqAAAAACj-rif8fLf97kWx-7fPUQvLAnYC"></div>
             <!-- Submit Button -->
             <div>
-                <button type="submit" class="w-full bg-yellow-400 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-500 transition-colors">
+                <button class="w-full bg-yellow-400 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-500 transition-colors" type="submit">
                     Register
                 </button>
             </div>
@@ -72,16 +78,16 @@
         <div class="flex justify-between items-center">
             <!-- Social Media Links -->
             <div class="flex space-x-6">
-                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                <a class="text-gray-400 hover:text-yellow-400 transition-colors" href="#">
                     <i class="fab fa-facebook-f text-2xl"></i>
                 </a>
-                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                <a class="text-gray-400 hover:text-yellow-400 transition-colors" href="#">
                     <i class="fab fa-twitter text-2xl"></i>
                 </a>
-                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                <a class="text-gray-400 hover:text-yellow-400 transition-colors" href="#">
                     <i class="fab fa-instagram text-2xl"></i>
                 </a>
-                <a href="#" class="text-gray-400 hover:text-yellow-400 transition-colors">
+                <a class="text-gray-400 hover:text-yellow-400 transition-colors" href="#">
                     <i class="fab fa-discord text-2xl"></i>
                 </a>
             </div>

@@ -15,3 +15,5 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 server:
   port: 8090
+google:
+  api-secret:  ${google_api_secret}
