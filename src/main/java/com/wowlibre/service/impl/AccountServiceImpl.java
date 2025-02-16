@@ -36,7 +36,7 @@ public class AccountServiceImpl implements AccountService {
         SecureRandom random = new SecureRandom();
 
         try {
-            byte[] salt = new byte[16];
+            byte[] salt = new byte[32];
             random.nextBytes(salt);
 
             final String username = request.getUsername();
