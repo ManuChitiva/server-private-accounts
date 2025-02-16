@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 
             final String username = request.getUsername();
             byte[] verifier = EncryptionService.computeVerifier(ParamsEncrypt.trinitycore, salt, username.toUpperCase(),
-                    request.getPassword());
+                    request.getPassword().toUpperCase());
 
             AccountEntity account = new AccountEntity();
             account.setSalt(salt);
